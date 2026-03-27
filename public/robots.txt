@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://numbers-analyzer.netlify.app/sitemap.xml
