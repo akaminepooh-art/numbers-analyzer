@@ -40,14 +40,14 @@ export function useNumbersData(gameType: NumbersGameType) {
       }
     }
 
-    // Netlify Function からデータ取得を試行
+    // 自前ホスティングJSONからデータ取得
     try {
-      const res = await fetch(`/.netlify/functions/fetch-results?game=${gameType}`);
+      const res = await fetch(`/data/${gameType}.json`);
       if (res.ok) {
         const json = await res.json();
         if (json.success && json.data?.length > 0) {
           setData(json.data);
-          setSource(json.source || 'API');
+          setSource(json.source || 'self-hosted');
           localStorage.setItem(cacheKey, JSON.stringify({
             data: json.data,
             timestamp: Date.now(),
@@ -57,7 +57,7 @@ export function useNumbersData(gameType: NumbersGameType) {
         }
       }
     } catch {
-      console.log('Netlify Function not available, using sample data');
+      console.log('Static data not available, using sample data');
     }
 
     // フォールバック: サンプルデータ

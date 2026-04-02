@@ -11,7 +11,6 @@ export interface NumbersGameConfig {
   drawDayLabel: string;      // "月〜金曜"
   color: string;
   colorLight: string;
-  csvUrl: string;
   emoji: string;
   betTypes: BetType[];
 }
@@ -26,7 +25,6 @@ export const GAME_CONFIGS: Record<NumbersGameType, NumbersGameConfig> = {
     drawDayLabel: '月〜金曜',
     color: '#ef4444',
     colorLight: '#f87171',
-    csvUrl: 'https://www.mk-mode.com/rails/loto/NUMBERS3_ALL.csv',
     emoji: '3️⃣',
     betTypes: ['straight', 'box', 'set', 'mini'],
   },
@@ -39,7 +37,6 @@ export const GAME_CONFIGS: Record<NumbersGameType, NumbersGameConfig> = {
     drawDayLabel: '月〜金曜',
     color: '#8b5cf6',
     colorLight: '#a78bfa',
-    csvUrl: 'https://www.mk-mode.com/rails/loto/NUMBERS4_ALL.csv',
     emoji: '4️⃣',
     betTypes: ['straight', 'box', 'set'],
   },
