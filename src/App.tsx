@@ -21,7 +21,7 @@ export default function App() {
     return (localStorage.getItem('numbers_theme') as 'dark' | 'light') || 'dark';
   });
   const config = GAME_CONFIGS[gameType];
-  const { data, loading, error, source, refresh } = useNumbersData(gameType);
+  const { data, loading, error, refresh } = useNumbersData(gameType);
 
   // テーマ切り替え
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function App() {
           </div>
         ) : (
           <div key={page} className="animate-fade-in">
-            {page === 'dashboard' && <DashboardPage data={data} source={source} config={config} onNavigate={setPage} />}
+            {page === 'dashboard' && <DashboardPage data={data} config={config} onNavigate={setPage} />}
             {page === 'analysis' && <AnalysisPage data={data} config={config} />}
             {page === 'prediction' && <PredictionPage data={data} config={config} />}
             {page === 'fortune' && <FortunePage config={config} />}

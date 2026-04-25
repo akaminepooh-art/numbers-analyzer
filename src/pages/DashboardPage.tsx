@@ -11,12 +11,11 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLin
 
 interface Props {
   data: NumbersResult[];
-  source: string;
   config: NumbersGameConfig;
   onNavigate: (page: PageId) => void;
 }
 
-export default function DashboardPage({ data, source, config, onNavigate }: Props) {
+export default function DashboardPage({ data, config, onNavigate }: Props) {
   const latest = data[data.length - 1];
   const freq = useMemo(() => calcOverallFrequency(data, config), [data, config]);
   const { hot, cold } = useMemo(() => getHotCold(freq), [freq]);
@@ -113,8 +112,8 @@ export default function DashboardPage({ data, source, config, onNavigate }: Prop
           )}
         </GlassCard>
         <GlassCard animate stagger={2} className="p-5">
-          <div className="text-sm text-text-secondary mb-1">データソース</div>
-          <div className="text-2xl font-bold text-text-primary">{source}</div>
+          <div className="text-sm text-text-secondary mb-1">最新抽選日</div>
+          <div className="text-2xl font-bold text-text-primary">{latest?.date || '—'}</div>
           <div className="text-sm text-text-secondary mt-1">{config.name} 全{data.length}回</div>
         </GlassCard>
         <GlassCard animate stagger={3} className="p-5">
